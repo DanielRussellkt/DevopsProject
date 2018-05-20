@@ -1,0 +1,23 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  become: true
+  
+  tasks:
+  - name: Update
+    command: apt-get update
+    
+  - name: Install wget and zabbix-agent
+    apt: name={{item}} state=latest
+    with_items: 
+      - wget
+      - zabbix-agent
+
+  - name: Copy Zabbix conf file
+    get_url: url='https://raw.githubusercontent.com/Megalawls/DevOps-Project/master/Zabbix%20Files/zabbix_agentd.conf' dest='/etc/zabbix/zabbix_agentd.conf' force=yes
+    notify:
+      - Start zabbix-agent
+      
+  handlers:
+  - name: Start zabbix-agent
+    service: name=zabbix-agent state=started enabled=yes
