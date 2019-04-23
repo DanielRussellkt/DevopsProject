@@ -1,6 +1,8 @@
 # DevOps-Project
 A repository for resources pertaining to this DevOps project, includin YAML files, Dockerfiles, Vagrantfiles etc.
 
+Very old, but a good showcase of the use of these tools.
+
 Overview:
 
 - AWS Scripts: Shell Scripts for provisioning the AWS master server that we used for running ansible files, as a Zabbix server, and a Machine to Provision others via terraform - everything was based in the cloud
